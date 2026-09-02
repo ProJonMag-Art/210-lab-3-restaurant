@@ -39,11 +39,11 @@ Restaurant getUserData()
     float tempRating;
     unsigned int tempItemCount;
 
-    bool inputValidated = true;
+    bool inputValidated = false;
 
     do
     {
-        inputValidated = true;
+        inputValidated = false;
 
         cout << "Enter Restaurant Name: ";
         cin >> tempStr;
@@ -51,15 +51,12 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while (tempStr.length() < 0 && inputValidated == true);
-
-    cin.clear();
-    cin.ignore(__INT_MAX__, '\n');
+    } while (tempStr.length() == 0 && inputValidated == false);
 
     // Checks if phone number's digits are between 10 digits
     do
     {
-        inputValidated = true;
+        inputValidated = false;
 
         cout << "Enter Phone Number: ";
         cin >> tempPhone;
@@ -67,14 +64,11 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while (tempPhone > 9999999999 || tempPhone < 999999999 && inputValidated == true);
-    
-    cin.clear();
-    cin.ignore(__INT_MAX__, '\n');
+    } while (tempPhone > 9999999999 && tempPhone < 999999999 && inputValidated == false);
 
     do
     {
-        inputValidated = true; 
+        inputValidated = false; 
 
         cout << "Enter Distance: ";
         cin >> tempDist;
@@ -82,14 +76,11 @@ Restaurant getUserData()
         
         validateInput(inputValidated);
 
-    } while(inputValidated == true);
-
-    cin.clear();
-    cin.ignore(__INT_MAX__, '\n');
+    } while(inputValidated == false);
 
     do
     {
-        inputValidated = true;
+        inputValidated = false;
 
         cout << "Enter Rating: ";
         cin >> tempRating;
@@ -97,14 +88,11 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while(tempRating < 0 || tempRating > 5.0 && inputValidated == true);
+    } while(tempRating < 0 || tempRating > 5.0 || inputValidated == false);
     
-    cin.clear();
-    cin.ignore(__INT_MAX__, '\n');
-
     do
     {
-        inputValidated = true;
+        inputValidated = false;
 
         cout << "Enter Menu Item Count: ";
         cin >> tempItemCount;
@@ -112,7 +100,7 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while(inputValidated == true);
+    } while(inputValidated == false);
     
     return {tempStr, tempPhone, tempDist, tempRating, tempItemCount};
 }
@@ -126,7 +114,11 @@ void validateInput(bool& inputValidated)
         cout << "Invalid Input. Please try again";
         cin.clear();
         cin.ignore(__INT_MAX__, '\n');
-        inputValidated = false;
+        inputValidated = true;
+    }
+    else
+    {
+        inputValidated = true;
     }
 }
 
