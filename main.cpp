@@ -21,10 +21,12 @@ struct Restaurant
 Restaurant getUserData(); // saves getUserData() as temp variables, then creates a new restaurant object with those variables
 void validateInput(bool&); // Checks if cin fails or not, retries if it does while clearing the previous entry
 
+Restaurant restArr[4];
+
 int main()
 {
-    Restaurant newRest = getUserData();
-    cout << newRest.name << " " << newRest.phoneNum << " " << newRest.distance << " " << newRest.rating << " " << newRest.menuItemCount << endl;
+    Restaurant restTest = getUserData();
+    cout << restTest.name << " " << restTest.phoneNum << " " << restTest.distance << " " << restTest.rating << " " << restTest.menuItemCount << endl;
     return 0;
 }
 
@@ -60,7 +62,7 @@ Restaurant getUserData()
         cin >> tempPhone;
         cout << endl;
 
-        validateInput(inputValidated);
+        //validateInput(inputValidated);
 
     } while (tempPhone > 9999999999 || tempPhone < 999999999 && inputValidated == true);
     
@@ -72,7 +74,7 @@ Restaurant getUserData()
         cin >> tempDist;
         cout << endl;
         
-        validateInput(inputValidated);
+        //validateInput(inputValidated);
 
     } while(inputValidated == true);
 
@@ -84,7 +86,7 @@ Restaurant getUserData()
         cin >> tempRating;
         cout << endl;
 
-        validateInput(inputValidated);
+        //validateInput(inputValidated);
 
     } while(tempRating < 0 || tempRating > 5.0 && inputValidated == true);
     
@@ -96,7 +98,7 @@ Restaurant getUserData()
         cin >> tempItemCount;
         cout << endl;
 
-        validateInput(inputValidated);
+        //validateInput(inputValidated);
 
     } while(inputValidated == true);
     
@@ -111,5 +113,13 @@ void validateInput(bool& inputValidated)
         cin.clear();
         cin.ignore(__INT_MAX__, '\n');
         inputValidated = false;
+    }
+}
+
+void outputRestaurants(Restaurant restArr[4])
+{
+    for(int i = 0; i <= 4; i++)
+    {
+        cout << restArr[i].name << " " << restArr[i].phoneNum << " " << restArr[i].distance << " " << restArr[i].rating << " " << restArr[i].menuItemCount << endl;
     }
 }
