@@ -113,14 +113,12 @@ Restaurant getUserData()
 
 void validateInput(bool& inputValidated)
 {
-    cout << inputValidated << endl;
-
     if(cin.fail())
     {
         cout << "Invalid Input. Please try again";
         cin.clear(); // Clears fail flag
         cin.ignore(__INT_MAX__, '\n'); // Ignores every other entry until newline char
-        inputValidated = true; // Sets input validated to true to loop and ask for another input
+        inputValidated = false; // Sets input validated to true to loop and ask for another input
     }
     else
     {
