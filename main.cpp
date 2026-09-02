@@ -36,22 +36,32 @@ Restaurant getUserData()
     float tempRating;
     unsigned int tempItemCount;
 
-    cout << "Enter Restaurant Name: ";
-    cin >> tempStr;
-    cout << endl;
+    do
+    {
+        cout << "Enter Restaurant Name: ";
+        cin >> tempStr;
+        cout << endl;
+    } while (tempStr.length() < 0);
 
-    cout << "Enter Phone Number: ";
-    cin >> tempPhone;
-    cout << endl;
-
+    // Checks if phone number's digits are between 10 digits
+    do
+    {
+        cout << "Enter Phone Number: ";
+        cin >> tempPhone;
+        cout << endl;
+    } while (tempPhone > 9999999999 || tempPhone < 999999999);
+    
     cout << "Enter Distance: ";
     cin >> tempDist;
     cout << endl;
 
-    cout << "Enter Rating: ";
-    cin >> tempRating;
-    cout << endl;
-
+    do
+    {
+        cout << "Enter Rating: ";
+        cin >> tempRating;
+        cout << endl;
+    } while(tempRating < 0 || tempRating > 5.0);
+    
     cout << "Enter Menu Item Count: ";
     cin >> tempItemCount;
     cout << endl;
