@@ -1,4 +1,7 @@
 
+// COMSC-210 | Lab 3 | Jonvianney Maglasang
+// Started on September 1, 2026 at 7:44 | Completed on Spetember 1, 2026 at 
+
 #include <iostream>
 #include <string>
 
@@ -14,12 +17,13 @@ struct Restaurant
     unsigned int menuItemCount;
 };
 
-
+// getUserData() gets user input via cin, saves those inputs as temp variables, and then creates a new restaurant object with those variables
+Restaurant getUserData();
 
 int main()
 {
     Restaurant newRest = getUserData();
-    cout << newRest.name << " " << newRest.phoneNum << " " << newRest.distance << " " << newRest.rating << " " << newRest.menuItemCount;
+    cout << newRest.name << " " << newRest.phoneNum << " " << newRest.distance << " " << newRest.rating << " " << newRest.menuItemCount << endl;
     return 0;
 }
 
