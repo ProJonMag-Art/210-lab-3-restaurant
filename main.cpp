@@ -12,10 +12,10 @@ using namespace std;
 struct Restaurant
 {
     string name;
-    int phoneNum;
+    long long phoneNum;
     double distance;
     float rating;
-    unsigned int menuItemCount;
+    int menuItemCount;
 };
 
 Restaurant getUserData(); // saves getUserData() as temp variables, then creates a new restaurant object with those variables
@@ -25,8 +25,13 @@ Restaurant restArr[4];
 
 int main()
 {
-    Restaurant restTest = getUserData();
-    cout << restTest.name << " " << restTest.phoneNum << " " << restTest.distance << " " << restTest.rating << " " << restTest.menuItemCount << endl;
+    restArr[0] = getUserData();
+    restArr[1] = {"Wong's Seafood House", 1234567890, 34.31, 4.5, 30};
+    restArr[2] = {"Mario's Pasta Shop", 1238945667, 24.59, 3.3, 18};
+    restArr[3] = {"Miss Vanessa's Bakery", 1235869023, 5.55, 4.9, 27};
+
+    outputRest(restArr);
+
     return 0;
 }
 
@@ -34,10 +39,10 @@ int main()
 Restaurant getUserData()
 {
     string tempStr;
-    int tempPhone;
+    long long tempPhone;
     double tempDist;
     float tempRating;
-    unsigned int tempItemCount;
+    int tempItemCount;
 
     bool inputValidated = false;
 
@@ -51,7 +56,7 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while (tempStr.length() == 0 && inputValidated == false);
+    } while (tempStr.length() == 0 || inputValidated == false);
 
     // Checks if phone number's digits are between 10 digits
     do
@@ -64,7 +69,7 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while (tempPhone > 9999999999 && tempPhone < 999999999 && inputValidated == false);
+    } while (tempPhone > 9999999999 || tempPhone < 999999999 || inputValidated == false);
 
     do
     {
@@ -100,7 +105,7 @@ Restaurant getUserData()
 
         validateInput(inputValidated);
 
-    } while(inputValidated == false);
+    } while(tempItemCount < 0 || inputValidated == false);
     
     return {tempStr, tempPhone, tempDist, tempRating, tempItemCount};
 }
@@ -122,7 +127,7 @@ void validateInput(bool& inputValidated)
     }
 }
 
-void outputRestaurants(Restaurant restArr[4])
+void outputRest(Restaurant restArr[4])
 {
     for(int i = 0; i <= 4; i++)
     {
