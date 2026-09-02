@@ -49,9 +49,12 @@ Restaurant getUserData()
         cin >> tempStr;
         cout << endl;
 
-        //validateInput(inputValidated);
+        validateInput(inputValidated);
 
     } while (tempStr.length() < 0 && inputValidated == true);
+
+    cin.clear();
+    cin.ignore(__INT_MAX__, '\n');
 
     // Checks if phone number's digits are between 10 digits
     do
@@ -62,10 +65,13 @@ Restaurant getUserData()
         cin >> tempPhone;
         cout << endl;
 
-        //validateInput(inputValidated);
+        validateInput(inputValidated);
 
     } while (tempPhone > 9999999999 || tempPhone < 999999999 && inputValidated == true);
     
+    cin.clear();
+    cin.ignore(__INT_MAX__, '\n');
+
     do
     {
         inputValidated = true; 
@@ -74,9 +80,12 @@ Restaurant getUserData()
         cin >> tempDist;
         cout << endl;
         
-        //validateInput(inputValidated);
+        validateInput(inputValidated);
 
     } while(inputValidated == true);
+
+    cin.clear();
+    cin.ignore(__INT_MAX__, '\n');
 
     do
     {
@@ -86,10 +95,13 @@ Restaurant getUserData()
         cin >> tempRating;
         cout << endl;
 
-        //validateInput(inputValidated);
+        validateInput(inputValidated);
 
     } while(tempRating < 0 || tempRating > 5.0 && inputValidated == true);
     
+    cin.clear();
+    cin.ignore(__INT_MAX__, '\n');
+
     do
     {
         inputValidated = true;
@@ -98,7 +110,7 @@ Restaurant getUserData()
         cin >> tempItemCount;
         cout << endl;
 
-        //validateInput(inputValidated);
+        validateInput(inputValidated);
 
     } while(inputValidated == true);
     
@@ -107,6 +119,8 @@ Restaurant getUserData()
 
 void validateInput(bool& inputValidated)
 {
+    cout << inputValidated << endl;
+
     if(cin.fail())
     {
         cout << "Invalid Input. Please try again";
@@ -120,6 +134,7 @@ void outputRestaurants(Restaurant restArr[4])
 {
     for(int i = 0; i <= 4; i++)
     {
-        cout << restArr[i].name << " " << restArr[i].phoneNum << " " << restArr[i].distance << " " << restArr[i].rating << " " << restArr[i].menuItemCount << endl;
+        cout << "Index | Restaurant | Phone Number | Distance | Rating | Menu Items" << endl;
+        cout << i << " " << restArr[i].name << " " << restArr[i].phoneNum << " " << restArr[i].distance << " " << restArr[i].rating << " " << restArr[i].menuItemCount << endl;
     }
 }
