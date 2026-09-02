@@ -20,6 +20,7 @@ struct Restaurant
 
 Restaurant getUserData(); // saves getUserData() as temp variables, then creates a new restaurant object with those variables
 void validateInput(bool&); // Checks if cin fails or not, retries if it does while clearing the previous entry
+void outputRest(Restaurant [4]);
 
 Restaurant restArr[4];
 
@@ -129,9 +130,8 @@ void validateInput(bool& inputValidated)
 
 void outputRest(Restaurant restArr[4])
 {
-    for(int i = 0; i <= 4; i++)
+    for(int i = 0; i < 4; i++)
     {
-        cout << "Index | Restaurant | Phone Number | Distance | Rating | Menu Items" << endl;
-        cout << i << " " << restArr[i].name << " " << restArr[i].phoneNum << " " << restArr[i].distance << " " << restArr[i].rating << " " << restArr[i].menuItemCount << endl;
+        cout << "Restaurant: " << i + 1 << " | Number: " << restArr[i].name << " | Phone Number: " << restArr[i].phoneNum << " | Distance: " << restArr[i].distance << "mi | Rating (Out of 5 Stars): " << restArr[i].rating << " | Number of Menu Items: " << restArr[i].menuItemCount << endl;
     }
 }
