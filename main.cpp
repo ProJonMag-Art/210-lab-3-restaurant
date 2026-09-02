@@ -1,7 +1,7 @@
 
 // COMSC-210 | Lab 3 | Jonvianney Maglasang
-// Started on September 1, 2026 at 7:44 | First break at September 1, 2026 at 8:25 | Second Break at
-// Completed on Spetember 1, 2026 at 
+// Started on September 1, 2026 at 7:44
+// Completed on Spetember 1, 2026 at 9:53
 
 #include <iostream>
 #include <string>
@@ -18,9 +18,9 @@ struct Restaurant
     int menuItemCount;
 };
 
-Restaurant getUserData(); // saves getUserData() as temp variables, then creates a new restaurant object with those variables
-void validateInput(bool&); // Checks if cin fails or not, retries if it does while clearing the previous entry
-void outputRest(Restaurant [4]);
+Restaurant getUserData(); // Saves getUserData() as temp variables, then creates a new restaurant object with those variables
+void validateInput(bool&); // Checks if cin fails or not, asks for a resubmission if entry fails. Then clears the previous cin entry
+void outputRest(Restaurant [4]); // Outputs the contents of a Restaurant array, one of which is user inputted.
 
 Restaurant restArr[4];
 
@@ -36,7 +36,7 @@ int main()
     return 0;
 }
 
-// Gets user inputs and outputs a new restaurant object (Needs input validation)
+// Gets user inputs and outputs a new restaurant object
 Restaurant getUserData()
 {
     string tempStr;
@@ -118,9 +118,9 @@ void validateInput(bool& inputValidated)
     if(cin.fail())
     {
         cout << "Invalid Input. Please try again";
-        cin.clear();
-        cin.ignore(__INT_MAX__, '\n');
-        inputValidated = true;
+        cin.clear(); // Clears fail flag
+        cin.ignore(__INT_MAX__, '\n'); // Ignores every other entry until newline char
+        inputValidated = true; // Sets input validated to true to loop and ask for another input
     }
     else
     {
