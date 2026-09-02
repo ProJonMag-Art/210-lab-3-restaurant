@@ -1,6 +1,7 @@
 
 // COMSC-210 | Lab 3 | Jonvianney Maglasang
-// Started on September 1, 2026 at 7:44 | Completed on Spetember 1, 2026 at 
+// Started on September 1, 2026 at 7:44 | First break at September 1, 2026 at 8:25 | Second Break at
+// Completed on Spetember 1, 2026 at 
 
 #include <iostream>
 #include <string>
@@ -35,6 +36,7 @@ Restaurant getUserData()
     double tempDist;
     float tempRating;
     unsigned int tempItemCount;
+    bool inputValidated = true;
 
     do
     {
@@ -49,11 +51,29 @@ Restaurant getUserData()
         cout << "Enter Phone Number: ";
         cin >> tempPhone;
         cout << endl;
+
+        if(cin.fail())
+        {
+            cout << "Invalid Input. Please type in numbers";
+            cin.clear();
+            cin.ignore(__INT_MAX__, '\n');
+        }
     } while (tempPhone > 9999999999 || tempPhone < 999999999);
     
-    cout << "Enter Distance: ";
-    cin >> tempDist;
-    cout << endl;
+    do
+    {
+        cout << "Enter Distance: ";
+        cin >> tempDist;
+        cout << endl;
+        
+        if(cin.fail())
+        {
+            cout << "Invalid Input. Please type in numbers";
+            cin.clear();
+            cin.ignore(__INT_MAX__, '\n');
+            inputValidated = false;
+        }
+    } while (inputValidated == true);
 
     do
     {
@@ -62,9 +82,33 @@ Restaurant getUserData()
         cout << endl;
     } while(tempRating < 0 || tempRating > 5.0);
     
-    cout << "Enter Menu Item Count: ";
-    cin >> tempItemCount;
-    cout << endl;
+    do
+    {
+        inputValidated = true;
+        cout << "Enter Menu Item Count: ";
+        cin >> tempItemCount;
+        cout << endl;
+
+        if(cin.fail())
+        {
+            cout << "Invalid Input. Please type in numbers";
+            cin.clear();
+            cin.ignore(__INT_MAX__, '\n');
+            inputValidated = false;
+        }
+
+    } while (inputValidated == true);
     
     return {tempStr, tempPhone, tempDist, tempRating, tempItemCount};
+}
+
+void validateInput(bool& inputValidated)
+{
+    if(cin.fail())
+    {
+        cout << "Invalid Input. Please type in numbers";
+        cin.clear();
+        cin.ignore(__INT_MAX__, '\n');
+        inputValidated = false;
+    }
 }
